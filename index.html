@@ -427,21 +427,18 @@
     'FN:Dr. Vasilios Keramaris',
     'ORG:IQTaxi Inc. / My-Energia',
     'TITLE:Founder & CEO',
-    'TEL;TYPE=CELL:+306944146889',
+    'TEL:+306944146889',
     'EMAIL:v@iqtaxi.com',
-    'URL:https://www.iqtaxi.com/newsite/',
-    'URL:https://my-energia.com/en/homepage-en/',
-    'URL:https://www.linkedin.com/in/vasilios-keramaris-ph-d-2142976/',
     'END:VCARD'
   ].join('\n');
 
   new QRCode(document.getElementById('qrcode'), {
     text: vcard,
-    width: 120,
-    height: 120,
+    width: 148,
+    height: 148,
     colorDark: '#15130f',
     colorLight: '#f2ede4',
-    correctLevel: QRCode.CorrectLevel.L
+    correctLevel: QRCode.CorrectLevel.M
   });
 
   if ('serviceWorker' in navigator) {
