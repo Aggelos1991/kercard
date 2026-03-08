@@ -372,41 +372,6 @@
     stroke-linejoin: round;
   }
 
-  /* === PWA HINT === */
-  .pwa-hint {
-    text-align: center;
-    margin-top: 20px;
-    animation: fadeSlide 0.5s 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .pwa-hint p {
-    font-size: 11px;
-    color: rgba(242,237,228,0.2);
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-  }
-
-  .pwa-hint .share-icon {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    vertical-align: -2px;
-    margin: 0 2px;
-  }
-
-  .pwa-hint .share-icon svg {
-    width: 100%;
-    height: 100%;
-    stroke: rgba(242,237,228,0.35);
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  @media (display-mode: standalone) {
-    .pwa-hint { display: none; }
-  }
 
   @keyframes fadeSlide {
     from { opacity: 0; transform: translateY(14px); }
@@ -498,13 +463,6 @@
     Save Contact with Photo
   </button>
 
-  <div class="pwa-hint" id="pwaHint">
-    <p>
-      Tap
-      <span class="share-icon"><svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></span>
-      then "Add to Home Screen"<br>to keep this card on your phone
-    </p>
-  </div>
 </div>
 
 <script>
@@ -552,9 +510,6 @@
     navigator.serviceWorker.register('sw.js');
   }
 
-  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
-    document.getElementById('pwaHint').style.display = 'none';
-  }
 </script>
 
 </body>
