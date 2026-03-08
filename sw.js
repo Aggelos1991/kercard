@@ -1,11 +1,12 @@
-const CACHE_NAME = 'ak-card-v1';
+const CACHE_NAME = 'vk-card-v2';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  '/icons/apple-touch-icon.png'
+  './',
+  './index.html',
+  './manifest.json',
+  './photo.png',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
+  './icons/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -34,6 +35,6 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       });
-    }).catch(() => caches.match('/index.html'))
+    }).catch(() => caches.match('./index.html'))
   );
 });
