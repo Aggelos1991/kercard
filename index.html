@@ -330,48 +330,6 @@
     line-height: 1.5;
   }
 
-  /* === SAVE BUTTON === */
-  .save-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    margin: 16px auto 0;
-    padding: 15px;
-    background: linear-gradient(145deg, rgba(200,169,110,0.1), rgba(200,169,110,0.04));
-    border: 1px solid rgba(200,169,110,0.1);
-    border-radius: 16px;
-    color: #c8a96e;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    animation: fadeSlide 0.5s 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-    position: relative;
-    overflow: hidden;
-    -webkit-appearance: none;
-  }
-
-  .save-btn:hover, .save-btn:active {
-    border-color: rgba(200,169,110,0.22);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(180,140,70,0.1);
-    background: linear-gradient(145deg, rgba(200,169,110,0.15), rgba(200,169,110,0.06));
-  }
-
-  .save-btn svg {
-    width: 17px;
-    height: 17px;
-    stroke: #c8a96e;
-    fill: none;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
 
   @keyframes fadeSlide {
     from { opacity: 0; transform: translateY(14px); }
@@ -458,53 +416,20 @@
     </div>
   </div>
 
-  <button class="save-btn" onclick="downloadVCard()">
-    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-    Save Contact with Photo
-  </button>
 
 </div>
 
 <script>
-  const baseUrl = window.location.href.replace(/[#?].*$/, '').replace(/index\.html$/, '');
-  const photoUrl = baseUrl + 'photo.png';
+  const cardUrl = window.location.href.replace(/[#?].*$/, '').replace(/index\.html$/, '');
 
-  // Full vCard for download (with photo and all URLs)
-  const vcardFull = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    'N:Keramaris;Vasilios;;Ph.D.',
-    'FN:Vasilios Keramaris Ph.D.',
-    'ORG:IQTaxi Inc. / My-Energia',
-    'TITLE:Founder & CEO',
-    'TEL;TYPE=CELL:+306944146889',
-    'EMAIL:v@iqtaxi.com',
-    'URL:https://www.iqtaxi.com/newsite/',
-    'URL:https://my-energia.com/en/homepage-en/',
-    'URL:https://www.linkedin.com/in/vasilios-keramaris-ph-d-2142976/',
-    'PHOTO;VALUE=URI:' + photoUrl,
-    'END:VCARD'
-  ].join('\r\n');
-
-  // QR code opens this card's URL
   new QRCode(document.getElementById('qrcode'), {
-    text: baseUrl,
+    text: cardUrl,
     width: 120,
     height: 120,
     colorDark: '#15130f',
     colorLight: '#f2ede4',
     correctLevel: QRCode.CorrectLevel.L
   });
-
-  function downloadVCard() {
-    const blob = new Blob([vcardFull], { type: 'text/vcard' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Vasilios_Keramaris.vcf';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
